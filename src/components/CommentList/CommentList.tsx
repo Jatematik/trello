@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import { cards, comments } from '../../store/fakeStore';
 import { CommentTypeProps } from '../../types';
-import { IButton } from '../../ui/IButton';
 import { InputGroup } from '../../ui/InputGroup';
 import Comment from '../Comment/Comment';
 
@@ -36,8 +35,8 @@ const CommentList: React.FC<CommentListProps> = ({ cardId }) => {
   };
 
   return (
-    <div>
-      <strong>Comments</strong>
+    <div className="comments">
+      <h3>Comments</h3>
       <InputGroup onClickBtn={addComment} btnType="success">
         Add comment
       </InputGroup>

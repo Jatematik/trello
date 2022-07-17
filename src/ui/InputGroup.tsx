@@ -41,7 +41,10 @@ export const InputGroup: React.FC<InputGroupProps> = ({
     }
   };
 
-  const handler = () => onClickBtn(value);
+  const handler = () => {
+    onClickBtn(value);
+    setValue('');
+  };
 
   return (
     <div className="input-append">

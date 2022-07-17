@@ -3,6 +3,7 @@ import { ColumnTypeProps, CardTypeProps, CommentTypeProps } from '../types';
 const storeColumns = localStorage.getItem('columns') || '';
 const storeCards = localStorage.getItem('cards') || '';
 const storeComments = localStorage.getItem('comments') || '';
+const storeUserName = localStorage.getItem('name') || '';
 
 export const columns: ColumnTypeProps[] = storeColumns
   ? JSON.parse(storeColumns)
@@ -34,3 +35,5 @@ export const cards: CardTypeProps[] = storeCards ? JSON.parse(storeCards) : [];
 export const comments: CommentTypeProps[] = storeComments
   ? JSON.parse(storeComments)
   : [];
+
+export const userName: string = storeUserName ? storeUserName : '';

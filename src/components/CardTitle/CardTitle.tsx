@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
-
-import { columns } from '../../store/fakeStore';
-import { ColumnTypeProps } from '../../types';
+import { cards } from '../../store/fakeStore';
+import { CardTypeProps } from '../../types';
 import { InputGroup } from '../../ui/InputGroup';
 
-const ColumnTitle: React.FC<ColumnTitleProps> = ({ column }) => {
+const CardTitle: React.FC<CardTitleProps> = ({ card }) => {
   const [isUpdateTitle, setIsUpdateTitle] = useState<boolean>(false);
-  const [value, setValue] = useState<string>(column.title);
+  const [value, setValue] = useState<string>(card.title);
 
   const updateTitle = (value: string) => {
     if (value.trim()) {
       setValue(value);
-      columns.forEach((item: ColumnTypeProps) => {
-        if (item.id === column.id) {
+      cards.forEach((item) => {
+        if (item.id === card.id) {
           item.title = value;
         }
       });
-      localStorage.setItem('columns', JSON.stringify(columns));
+      localStorage.setItem('cards', JSON.stringify(cards));
     }
     setIsUpdateTitle(false);
   };
@@ -24,7 +23,7 @@ const ColumnTitle: React.FC<ColumnTitleProps> = ({ column }) => {
   const openUpdateInput = () => setIsUpdateTitle(true);
 
   return (
-    <div className="column-title">
+    <div className="card-title">
       {isUpdateTitle ? (
         <InputGroup
           btnType="primary"
@@ -42,8 +41,8 @@ const ColumnTitle: React.FC<ColumnTitleProps> = ({ column }) => {
   );
 };
 
-interface ColumnTitleProps {
-  column: ColumnTypeProps;
+interface CardTitleProps {
+  card: CardTypeProps;
 }
 
-export default ColumnTitle;
+export default CardTitle;

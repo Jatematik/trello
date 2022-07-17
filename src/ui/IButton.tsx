@@ -3,9 +3,10 @@ import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 export const IButton: React.FC<IButtonProps> = ({
   children,
   btnType,
+  cssClass,
   ...props
 }) => {
-  const classes = ['btn'];
+  const classes = ['btn', cssClass];
 
   switch (btnType) {
     case 'primary':
@@ -42,6 +43,7 @@ export const IButton: React.FC<IButtonProps> = ({
 
 interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: ReactNode;
+  cssClass?: string;
   btnType?:
     | 'primary'
     | 'info'

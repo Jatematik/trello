@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { cards, comments } from '../../store/fakeStore';
 
+import { cards, comments, userName } from '../../store/fakeStore';
 import { CommentTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 import { InputGroup } from '../../ui/InputGroup';
@@ -8,6 +8,7 @@ import { InputGroup } from '../../ui/InputGroup';
 const Comment: React.FC<CommentProps> = ({ commentItem, setCardComments }) => {
   const [isUpdate, setIsUpdate] = useState<boolean>(false);
   const [comment, setComment] = useState<CommentTypeProps>(commentItem);
+  const name: string = userName || localStorage.getItem('name') || '';
 
   const deleteComment = () => {
     comments.splice(comments.indexOf(comment), 1);
@@ -49,27 +50,37 @@ const Comment: React.FC<CommentProps> = ({ commentItem, setCardComments }) => {
     setIsUpdate(false);
   };
 
+  const openUpdate = () => setIsUpdate(true);
+
   return (
-    <div>
-      {isUpdate ? (
-        <InputGroup
-          onClickBtn={updateComment}
-          btnType="primary"
-          inputValue={comment.comment}
-        >
-          Update comment
-        </InputGroup>
-      ) : (
-        <>
-          <span>{comment.comment}</span>
-          <IButton btnType="primary" onClick={() => setIsUpdate(true)}>
+    <div className="card-comment">
+      <div className="avatar">{name[0]}</div>
+      <div>
+        <strong>{name}</strong>
+        {isUpdate ? (
+          <InputGroup
+            onClickBtn={updateComment}
+            btnType="primary"
+            inputValue={comment.comment}
+          >
+            Save
+          </InputGroup>
+        ) : (
+          <>
+            <div>
+              <p>{comment.comment}</p>
+            </div>
+          </>
+        )}
+        <div className="buttons">
+          <IButton btnType="link" onClick={openUpdate}>
             Update comment
           </IButton>
-          <IButton btnType="danger" onClick={deleteComment}>
-            Delete
+          <IButton btnType="link" onClick={deleteComment}>
+            Delete comment
           </IButton>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
 };
