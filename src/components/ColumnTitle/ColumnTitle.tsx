@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { columns } from '../../store/fakeStore';
+import { columns } from '../../store';
 import { ColumnTypeProps } from '../../types';
 import { InputGroup } from '../../ui/InputGroup';
 

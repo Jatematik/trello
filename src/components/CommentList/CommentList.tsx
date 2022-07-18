@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { cards, comments } from '../../store/fakeStore';
+import { cards, comments } from '../../store';
 import { CommentTypeProps } from '../../types';
 import { InputGroup } from '../../ui/InputGroup';
 import Comment from '../Comment/Comment';
@@ -19,17 +19,15 @@ const CommentList: React.FC<CommentListProps> = ({ cardId }) => {
       };
 
       comments.unshift(newComment);
-
-      localStorage.setItem('comments', JSON.stringify(comments));
-
-      setCardComments((comments) => [newComment, ...comments]);
-
       cards.forEach((item) => {
         if (item.id === cardId) {
           item.commentsIds.push(newComment.id);
         }
       });
 
+      setCardComments((comments) => [newComment, ...comments]);
+
+      localStorage.setItem('comments', JSON.stringify(comments));
       localStorage.setItem('cards', JSON.stringify(cards));
     }
   };

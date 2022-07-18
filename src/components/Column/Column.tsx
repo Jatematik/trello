@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { cards, columns } from '../../store/fakeStore';
+import { cards, columns } from '../../store';
 import { CardTypeProps, ColumnTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 import { InputGroup } from '../../ui/InputGroup';

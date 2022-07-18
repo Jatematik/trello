@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { cards, columns, comments } from '../../store/fakeStore';
+import { cards, columns, comments } from '../../store';
 import { CardTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 import { CardDetailed } from '../CardDetailed';
@@ -16,13 +16,11 @@ const Card: React.FC<CardProps> = ({ card, setCardList }) => {
     });
 
     cards.splice(cards.indexOf(card), 1);
-
-    localStorage.setItem('cards', JSON.stringify(cards));
+    const filterComment = comments.filter((item) => item.cardId !== card.id);
 
     setCardList((cards) => cards.filter((item) => item.id !== card.id));
 
-    const filterComment = comments.filter((item) => item.cardId !== card.id);
-
+    localStorage.setItem('cards', JSON.stringify(cards));
     localStorage.setItem('comments', JSON.stringify(filterComment));
   };
 

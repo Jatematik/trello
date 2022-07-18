@@ -1,3 +1,5 @@
+/* column */
+
 .column-container {
   display: flex;
   align-items: flex-start;
@@ -18,6 +20,8 @@
   min-height: 40px;
   cursor: pointer;
 }
+
+/* card */
 
 .card-title {
   margin-right: 50px;
@@ -42,58 +46,6 @@
   display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.input-append {
-  display: flex;
-}
-
-.input-append input {
-  margin-bottom: 0;
-  flex-grow: 1;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0,0,0, 0.5);
-  overflow-y: auto;
-}
-
-.modal-block {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  padding: 10px;
-  min-width: 600px;
-  border-radius: 5px;
-}
-
-.btn.btn-link {
-  padding: 4px 0;
-  background-image: none;
-  background-color: transparent;
-  color: #5e6c84;
-  border: none;
-  text-decoration: underline;
-  text-shadow: none;
-  background-repeat: no-repeat;
-  box-shadow: none;
-  outline: none;
-}
-
-.btn.btn-link:hover {
-  color: #2b487a;
-}
-
-.close-btn {
-  position: absolute;
-  right: 0;
 }
 
 .card-detailed {
@@ -150,7 +102,8 @@
 }
 
 .avatar {
-  width: 32px;
+  min-width: 32px;
+  max-width: 32px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -161,6 +114,37 @@
   color: #FFF;
 }
 
+.comment-block {
+  width: 100%;
+}
+
+/* modal */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0, 0.5);
+  overflow-y: auto;
+}
+
+.modal-block {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 10px;
+  width: 600px;
+  border-radius: 5px;
+  max-height: calc(100vh - 10%);
+  overflow: auto;
+}
+
+/* others */
+
 .buttons > .btn {
   margin-right: 15px;
 }
@@ -169,12 +153,39 @@
   margin-right: 0;
 }
 
-.card-detailed .title {
-  text-decoration: underline;
-}
-
 .input-text {
   line-height: 27px;
   font-size: 18px;
   font-weight: bold;
+}
+
+.input-append {
+  display: flex;
+}
+
+.input-append input {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.btn.btn-link {
+  padding: 4px 0;
+  background-image: none;
+  background-color: transparent;
+  color: #5e6c84;
+  border: none;
+  text-decoration: underline;
+  text-shadow: none;
+  background-repeat: no-repeat;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn.btn-link:hover {
+  color: #2b487a;
+}
+
+.close-btn {
+  position: absolute;
+  right: 0;
 }

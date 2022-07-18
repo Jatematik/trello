@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { cards, comments, userName } from '../../store/fakeStore';
+import { cards, comments, userName } from '../../store';
 import { CommentTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 import { InputGroup } from '../../ui/InputGroup';
@@ -13,18 +13,17 @@ const Comment: React.FC<CommentProps> = ({ commentItem, setCardComments }) => {
   const deleteComment = () => {
     comments.splice(comments.indexOf(comment), 1);
 
-    localStorage.setItem('comments', JSON.stringify(comments));
-
-    setCardComments((comments) =>
-      comments.filter((item) => item.id !== comment.id)
-    );
-
     cards.forEach((item) => {
       if (item.id === comment.cardId) {
         item.commentsIds.splice(item.commentsIds.indexOf(comment.id), 1);
       }
     });
 
+    setCardComments((comments) =>
+      comments.filter((item) => item.id !== comment.id)
+    );
+
+    localStorage.setItem('comments', JSON.stringify(comments));
     localStorage.setItem('cards', JSON.stringify(cards));
   };
 
@@ -36,13 +35,13 @@ const Comment: React.FC<CommentProps> = ({ commentItem, setCardComments }) => {
         id: comment.id,
       };
 
-      setComment(newComment);
-
       comments.forEach((item) => {
         if (item.id === commentItem.id) {
           item.comment = value;
         }
       });
+
+      setComment(newComment);
 
       localStorage.setItem('comments', JSON.stringify(comments));
     }
@@ -55,7 +54,7 @@ const Comment: React.FC<CommentProps> = ({ commentItem, setCardComments }) => {
   return (
     <div className="card-comment">
       <div className="avatar">{name[0]}</div>
-      <div>
+      <div className="comment-block">
         <strong>{name}</strong>
         {isUpdate ? (
           <InputGroup

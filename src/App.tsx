@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './App.css';
 import { ColumnContainer } from './layouts/ColumnContainer';
-import { columns, userName } from './store/fakeStore';
+import { columns, userName } from './store';
 import { InputGroup } from './ui/InputGroup';
 import { Modal } from './ui/Modal';
 
@@ -16,7 +16,7 @@ function App() {
   const saveName = (name: string) => {
     if (name.trim()) {
       setIsOpen(false);
-      localStorage.setItem('name', name);
+      localStorage.setItem('name', name.trim());
     }
   };
 

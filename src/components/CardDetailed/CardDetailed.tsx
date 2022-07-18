@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useCloseOnKey } from '../../hooks/useCloseOnKey';
-import { columns, userName } from '../../store/fakeStore';
+import { columns } from '../../store';
 import { CardTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 import { Modal } from '../../ui/Modal';
@@ -25,9 +25,9 @@ const CardDetailed: React.FC<CardDetailedProps> = ({ card, setIsOpenCard }) => {
         </IButton>
         <CardTitle card={card} />
         <p>
-          In column <span className="title">{columnTitle}</span>
+          In column <strong>{columnTitle}</strong>
         </p>
-        <h3>Author: {userName}</h3>
+        <h3>Author: {localStorage.getItem('name')}</h3>
         <CardDescription card={card} />
         <CommentList cardId={card.id} />
       </div>

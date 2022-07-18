@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Column } from '../../components/Column';
-import { columns } from '../../store/fakeStore';
+import { columns } from '../../store';
 import { ColumnTypeProps } from '../../types';
 
 const ColumnContainer: React.FC = () => {

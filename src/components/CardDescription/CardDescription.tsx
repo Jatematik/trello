@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 
-import { cards } from '../../store/fakeStore';
+import { cards } from '../../store';
 import { CardTypeProps } from '../../types';
 import { IButton } from '../../ui/IButton';
 
